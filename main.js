@@ -14,7 +14,7 @@ const canvasContainer = document.querySelector("#canvasContainer");
 
 const scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(
-  40,
+  75,
   canvasContainer.offsetWidth / canvasContainer.offsetHeight,
   0.1,
   1000
