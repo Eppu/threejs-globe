@@ -1,4 +1,4 @@
-import "./tailwind.css";
+import "tailwindcss/tailwind.css";
 import gsap from "gsap";
 import * as THREE from "three";
 import countries from "./countries.json";
