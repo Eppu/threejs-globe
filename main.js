@@ -55,6 +55,12 @@ if (canvasContainer) {
     })
   );
 
+  // Add rotation to globe
+  var radians = 23.4 * Math.PI / 180; // tilt in radians
+  sphere.geometry.applyMatrix( new THREE.Matrix4().makeRotationZ( - radians ) );
+  // Normalize the globe axis for proper rotation in object space
+  var earthAxis = new THREE.Vector3( Math.sin( radians ), Math.cos( radians ), 0 ).normalize();
+
   atmosphere.scale.set(1.1, 1.1, 1.1);
 
   scene.add(atmosphere);
@@ -212,14 +218,9 @@ if (canvasContainer) {
     renderer.render(scene, camera);
     group.rotation.y -= 0.0002;
     group.rotation.x += 0.00002;
-
-    // if (mouse.x) {
-    //   gsap.to(group.rotation, {
-    //     x: -mouse.y * 1.8,
-    //     y: mouse.x * 1.8,
-    //     duration: 2
-    //   })
-    // }
+    
+    // Use this for more accurate rotation
+    // group.rotateOnAxis( earthAxis, 0.01 ); // axis must be normalized
 
     // update the picking ray with the camera and mouse position
     raycaster.setFromCamera(mouse, camera);
