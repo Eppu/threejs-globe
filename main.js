@@ -10,7 +10,7 @@ import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
 
 import nightImage from "./img/night.jpg";
 
-console.log(countries);
+// console.log(countries);
 
 const canvasContainer = document.querySelector("#canvasContainer");
 if (canvasContainer) {
@@ -200,7 +200,7 @@ if (canvasContainer) {
     yPrev: undefined,
   };
 
-  console.log(group.children);
+  // console.log(group.children);
 
   const raycaster = new THREE.Raycaster();
   const popUpEl = document.querySelector("#popUpEl");
@@ -262,15 +262,15 @@ if (canvasContainer) {
   });
 
   addEventListener("mousemove", (event) => {
-    if (innerWidth >= 1280) {
-      mouse.x = ((event.clientX - innerWidth / 2) / (innerWidth / 2)) * 2 - 1;
-      mouse.y = -(event.clientY / innerHeight) * 2 + 1;
-    } else {
-      const offset = canvasContainer.getBoundingClientRect().top;
-      mouse.x = (event.clientX / innerWidth) * 2 - 1;
-      mouse.y = -((event.clientY - offset) / innerHeight) * 2 + 1;
-      console.log(mouse.y);
-    }
+    // if (innerWidth >= 1280) {
+    //   mouse.x = ((event.clientX - innerWidth / 2) / (innerWidth / 2)) * 2 - 1;
+    //   mouse.y = -(event.clientY / innerHeight) * 2 + 1;
+    // } else {
+    //   const offset = canvasContainer.getBoundingClientRect().top;
+    //   mouse.x = (event.clientX / innerWidth) * 2 - 1;
+    //   mouse.y = -((event.clientY - offset) / innerHeight) * 2 + 1;
+    //   console.log(mouse.y);
+    // }
 
     // gsap.set(popUpEl, {
     //   x: event.clientX,
