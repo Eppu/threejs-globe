@@ -10,8 +10,6 @@ import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
 
 import nightImage from "./img/night.jpg";
 
-// console.log(countries);
-
 const canvasContainer = document.querySelector("#canvasContainer");
 if (canvasContainer) {
   const scene = new THREE.Scene();
@@ -37,7 +35,6 @@ if (canvasContainer) {
       fragmentShader,
       uniforms: {
         globeTexture: {
-          // value: new THREE.TextureLoader().load("./img/globe.jpeg"),
           value: new THREE.TextureLoader().load(nightImage),
         },
       },
@@ -56,10 +53,14 @@ if (canvasContainer) {
   );
 
   // Add rotation to globe
-  var radians = 23.4 * Math.PI / 180; // tilt in radians
-  sphere.geometry.applyMatrix( new THREE.Matrix4().makeRotationZ( - radians ) );
+  var radians = (23.4 * Math.PI) / 180; // tilt in radians
+  sphere.geometry.applyMatrix(new THREE.Matrix4().makeRotationZ(-radians));
   // Normalize the globe axis for proper rotation in object space
-  var earthAxis = new THREE.Vector3( Math.sin( radians ), Math.cos( radians ), 0 ).normalize();
+  var earthAxis = new THREE.Vector3(
+    Math.sin(radians),
+    Math.cos(radians),
+    0
+  ).normalize();
 
   atmosphere.scale.set(1.1, 1.1, 1.1);
 
@@ -206,8 +207,6 @@ if (canvasContainer) {
     yPrev: undefined,
   };
 
-  // console.log(group.children);
-
   const raycaster = new THREE.Raycaster();
   const popUpEl = document.querySelector("#popUpEl");
   const populationEl = document.querySelector("#populationEl");
@@ -218,7 +217,7 @@ if (canvasContainer) {
     renderer.render(scene, camera);
     group.rotation.y -= 0.0002;
     group.rotation.x += 0.00002;
-    
+
     // Use this for more accurate rotation
     // group.rotateOnAxis( earthAxis, 0.01 ); // axis must be normalized
 
@@ -280,7 +279,6 @@ if (canvasContainer) {
 
     if (mouse.down) {
       event.preventDefault();
-      // console.log('turn the earth')
       const deltaX = event.clientX - mouse.xPrev;
       const deltaY = event.clientY - mouse.yPrev;
 
@@ -295,8 +293,6 @@ if (canvasContainer) {
       mouse.xPrev = event.clientX;
       mouse.yPrev = event.clientY;
     }
-
-    // console.log(mouse)
   });
 
   addEventListener("mouseup", (event) => {
